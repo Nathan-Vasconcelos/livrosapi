@@ -1,4 +1,5 @@
 using LivrosApi.Data;
+using LivrosApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,7 @@ namespace LivrosApi
         {
 
             services.AddDbContext<AppDbContext>(opts => opts.UseLazyLoadingProxies().UseMySQL(Configuration.GetConnectionString("LivroConnection")));
+            services.AddScoped<LivroService, LivroService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

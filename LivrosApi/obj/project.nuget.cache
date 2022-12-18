@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+zkfgNqVNHgmZ4/gpUe/aN+rMuekjxgKY6e1thNMXYhmMdDUzkRV5gJZNJOphNdyr/VZIH24+Fol7r+x8tro6g==",
+  "dgSpecHash": "h87E5rB22NeuTdsw+Y1Sn60cqkMMpd53hChAsq2EaYuiwaNg629MXpuSKoPKb8VGjdeuJyyZYeINXJjvisIeWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\natha\\source\\repos\\LivrosApi\\LivrosApi\\LivrosApi.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\natha\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
+    "C:\\Users\\natha\\.nuget\\packages\\fluentresults\\2.5.0\\fluentresults.2.5.0.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\google.protobuf\\3.19.4\\google.protobuf.3.19.4.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
