@@ -32,6 +32,8 @@ namespace LivrosApi
 
             services.AddDbContext<AppDbContext>(opts => opts.UseLazyLoadingProxies().UseMySQL(Configuration.GetConnectionString("LivroConnection")));
             services.AddScoped<LivroService, LivroService>();
+            services.AddScoped<AutorService, AutorService>();
+            services.AddScoped<CategoriaService, CategoriaService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

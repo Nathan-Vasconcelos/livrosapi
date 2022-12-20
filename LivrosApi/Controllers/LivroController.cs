@@ -15,14 +15,10 @@ namespace LivrosApi.Controllers
     [Route("[Controller]")]
     public class LivroController : ControllerBase
     {
-        private AppDbContext _context;
-        private IMapper _mapper;
         private LivroService _service;
 
-        public LivroController(AppDbContext context, IMapper mapper, LivroService livroService)
+        public LivroController(LivroService livroService)
         {
-            _context = context;
-            _mapper = mapper;
             _service = livroService;
         }
 

@@ -14,5 +14,8 @@ namespace LivrosApi.Models
         [JsonIgnore]
         public virtual Autor Autor { get; set; }
         public int AutorId { get; set; }
+        [JsonIgnore]
+        public virtual Categoria Categoria { get; set; }
+        public int CategoriaId { get; set; }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using FluentResults;
 using LivrosApi.Data;
 using LivrosApi.Data.AutorDto;
 using LivrosApi.Models;
+using LivrosApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,54 +14,40 @@ namespace LivrosApi.Controllers
     [Route("[Controller]")]
     public class AutorController : ControllerBase
     {
-        private AppDbContext _context;
-        private IMapper _mapper;
+        private AutorService _service;
 
-        public AutorController(AppDbContext context, IMapper mapper)
+        public AutorController(AutorService service)
         {
-            _context = context;
-            _mapper = mapper;
+            _service = service;
         }
 
         [HttpPost]
         public IActionResult CriarAutor(CreateAutorDto autorDto)
         {
-            //criar novo autor
-            Autor autor = _mapper.Map<Autor>(autorDto);
-            _context.Autores.Add(autor);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(RecuperarAutorPorId), new {Id = autor.Id}, autor);
+            ReadAutorDto readDto = _service.CriarAutor(autorDto);
+            return CreatedAtAction(nameof(RecuperarAutorPorId), new {Id = readDto.Id}, readDto);
         }
 
         [HttpGet]
-        public IActionResult RecuperaAutores()
+        public IActionResult RecuperarAutores()
         {
-            List<ReadAutorDto> autoresDto = _mapper.Map<List<ReadAutorDto>>(_context.Autores.ToList());
+            List<ReadAutorDto> autoresDto = _service.RecuperarAutores();
             return Ok(autoresDto);
         }
 
         [HttpGet("{id}")]
         public IActionResult RecuperarAutorPorId(int id)
         {
-            Autor autor = _context.Autores.FirstOrDefault(autor => autor.Id == id);
-            if (autor == null)
-            {
-                return NotFound();
-            }
-            ReadAutorDto autorDto = _mapper.Map<ReadAutorDto>(autor);
-            return Ok(autorDto);
+            ReadAutorDto readDto = _service.RecuperarAutorPorId(id);
+            if (readDto == null) return NotFound();
+            return Ok(readDto);
         }
 
         [HttpPut("{id}")]
         public IActionResult EditarAutor(int id, [FromBody] UpdateAutorDto autorDto)
         {
-            Autor autor = _context.Autores.FirstOrDefault(autor => autor.Id == id);
-            if (autor == null)
-            {
-                return NotFound();
-            }
-            _mapper.Map(autorDto, autor);
-            _context.SaveChanges();
+            Result resultado = _service.EditarAutor(id, autorDto);
+            if (resultado.IsFailed) return NotFound();
             return NoContent();
         }
     }
